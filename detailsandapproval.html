@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.js"></script>
+<title>verifying</title>
+<style>
+.application-note-p-head{
+  margin-bottom: 40px;
+}
+.randommemberspicked{
+  display: flex;
+  justify-content: center;
+}
+.space{
+  padding: 0px 2px;
+}
+#verificationicon{
+  font-size: 0px;
+}
+#veryfingmember, #verificationicon, #randomMemberElement{
+  transition: all 0.8s ease-in-out;
+}
+.gobackhome-p{
+  margin-top: -20px;
+}
+.gobackhome-p button{
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: blue;
+}
+</style>
+</head>
+<body>
+<!--CHECK QUALIFICATION-->
+<div class="qualifiedpopmessagediv" id="checkqualification"style="display: none;">
+<div class="qualifiedpopmessagedivflex">
+<div class="qualifiedpopmessagedivbox">
+<p class="qualifiedpopmessage-p"><span class="qualifiedpopmessage-span">Final verification check: This is to check and verify the testator's name to confirm if a record exists in our database. If no record is found, all applications will be denied and you will be banned for interruption.</p>
+<p class="qualifiedpopmessagebutton-p"><button onclick="checkQualification()">Check</button></p>
+</div>
+</div><!---->
+</div><!--QUALIFICATION-->
+
+  <!--approved-->
+  <div id="approval" class="approval-div">
+  <div class="approval-box">
+  <div>
+  <p class="application-note-p"><span id="verificationicon"><i class="fa-regular fa-circle-check"></i></span></p>
+  <div class="application-note-p application-note-p-head">
+    <span id="veryfingmember">Check Verification</span>
+  </div>
+<p class="randommemberspicked"><span id="randommemberspicked"></span></p>
+
+<div class="application-note-p"><p id="homebuttoninqualificationcheck" class="gobackhome-p"><button onclick="goBackHome()">Gobackhome</button></p></div>
+
+  <div class="application-note-p congrat-explore-btn-p" ><p id="congrat-explore-btn" style="display: none;"><button class="congrats-explore-btn" onclick="exploreToDashboard()">Claim my funds</button></p></div>
+  </div>
+  </div>
+</div><!--approval ends-->
+
+<!--QUALIFIED-->
+<div class="qualifiedpopmessagediv" id="qualifiedpopmessagediv" style="display: none;">
+<div class="qualifiedpopmessagedivflex">
+<div class="qualifiedpopmessagedivbox">
+<p class="qualifiedpopmessage-p"><span class="qualifiedpopmessagetrophy"><i class="fa-solid fa-medal"></i></span></p>
+<p class="qualifiedpopmessage-p"><span class="qualifiedpopmessage-span">Congratulations, <span id="membernamequalified">name</span>! we are pleased to inform you that our verification process has confirmed Mr.<span id="testatorname">testator</span>  as a registered testator in our database. You may now proceed with withdrawing your inherited funds.</span></p>
+<p class="qualifiedpopmessagebutton-p"><button onclick="thankYou()">Thank you</button></p>
+</div>
+</div>
+</div><!--Qualified-->
+
+<script>
+setTimeout(function(){
+if (localStorage.getItem('nameoftestator') ||localStorage.getItem('testatorname')){
+  document.getElementById('checkqualification').style.display = 'block'
+}
+},2000)
+function checkQualification(){
+document.getElementById('checkqualification').style.display = 'none';
+document.getElementById('veryfingmember').innerText = 'Verifying testator...';
+//counter section
+const counterElement = document.getElementById('counter');
+const randomMemberElement = document.getElementById('randommemberspicked');
+//marital heirship
+if (localStorage.getItem('nameoftestator')){
+const legateeFirstName =   localStorage.getItem('legateefirstname');
+const member = localStorage.getItem('nameoftestator');
+const capitalizedMember = legateeFirstName.charAt(0).toUpperCase() + legateeFirstName.slice(1);
+document.getElementById('membernamequalified').innerText = capitalizedMember;
+const capitalizedMember2 = member.charAt(0).toUpperCase() + member.slice(1);
+document.getElementById('testatorname').innerText = capitalizedMember2;
+}
+if (localStorage.getItem('testatorname')){
+//birthright 
+const member = localStorage.getItem('testatorname');
+const birthName = localStorage.getItem('birthrightname');
+const capitalizedMember = birthName.charAt(0).toUpperCase() + birthName.slice(1);
+document.getElementById('membernamequalified').innerText = capitalizedMember;
+const capitalizedMember2 = member.charAt(0).toUpperCase() + member.slice(1);
+document.getElementById('testatorname').innerText = capitalizedMember2;
+}
+let counter = 1;
+let members =  [
+  'Potter John',
+  'Jack Shawn',
+  'Oliver Lee',
+  'Harry Styles',
+  'Michael Davis',
+  'William Brown',
+  'James Wilson',
+  'George Miller',
+  'Thomas Anderson',
+  'Robert Jenkins',
+  'Richard Lewis',
+  'Charles Walker',
+  'Daniel Hall',
+  'Matthew Taylor',
+  'Emily Chen',
+  'Sarah Taylor',
+  'Kevin White',
+  'Rebecca Lee',
+  'Christopher Martin',
+  'Jessica Brown',
+  'Mark Davis',
+  'Lisa Nguyen',
+  'David Kim',
+  'Amanda Garcia',
+  'Joseph Patel',
+  'Hannah Lee',
+  'Brian Hall',
+  'Samantha Taylor',
+  'Alexander Gray',
+  'Julia Martin',
+  'Ryan Thompson',
+  // Additional American names
+  'Noah Martin',
+  'Liam Chen',
+  'Ava Kim',
+  'Elijah Patel',
+  'Mia Garcia',
+  'Logan White',
+  'Aiden Taylor',
+  'Sophia Hall',
+  'Julian Styles',
+  'Parker Lee',
+  'Cooper Brown',
+  'Riley Walker',
+  'Harper Jenkins',
+  'Gabriel Gray',
+  'Savannah Taylor',
+  'Dominic Davis',
+  'Aubrey Wilson',
+  'Caleb Martin',
+  'Landon Harris',
+  'Everley Lee',
+  // Additional British names
+  'Ethan Patel',
+  'Lily Tran',
+  'Oliver Watts',
+  'Isabella Khan',
+  'Alfie Lee',
+  'Georgia Marrison',
+  'Harry Flynn',
+  'Charlotte Taylor',
+  'William Lawson',
+  'Emily Waters',
+  'James Reed',
+  'Sophie Patel',
+  'Thomas Harris',
+  'Alice Brown',
+  'Rupert Holmes',
+  'Eleanor Lee',
+'Santiago Rodriguez',
+  'Lucas Silva',
+  'Mateo Garcia',
+  'Juanita Sanchez',
+  'Pedro Martins',
+  'Gabriela Ferreira',
+  'Fernando Lima',
+  'Isabella Rossi',
+  'Julian Sanchez',
+  'Sofia Vieira',
+  'Diego Marques',
+  'Valentina Gomez',
+  'Martin Santos',
+  'Luisa Fuentes',
+  'Tomas Ramirez',
+  'Daniela Lopes',
+  'Carlos Alberto',
+  'Beatriz Oliveira',
+  'Alejandro Salazar',
+  'Maria Luiza',
+'Jackson Brown',
+  'Elijah Johnson',
+  'Ava Washington',
+  'Logan Davis',
+  'Lily Tran',
+  'Noah Martin',
+  'Sophia Rodriguez',
+  'Mason Lee',
+  'Hailey Garcia',
+  'Owen Patel',
+  'Abigail Walker',
+  'Cameron White',
+  'Parker Hall',
+  'Cooper Kim',
+  'Riley Taylor',
+  'Harper Jenkins',
+  'Gabriel Gray',
+  'Savannah Taylor',
+  'Dominic Davis',
+  'Aubrey Wilson',
+  'Caleb Martin',
+  'Landon Harris',
+  'Everley Lee',
+];
+
+setInterval(() => {
+  const randomMember = members[Math.floor(Math.random() * members.length)];
+  randomMemberElement.innerText = randomMember;
+  
+  if (counter >= 200) {
+    if (localStorage.getItem('nameoftestator')){
+      const member = localStorage.getItem('nameoftestator');
+      randomMemberElement.innerHTML = member;
+    } else {
+      const member = localStorage.getItem('testatorname');
+      randomMemberElement.innerHTML = member;
+    }
+      document.getElementById('veryfingmember').innerText = 'Verified';
+      document.getElementById('veryfingmember').style.fontWeight = 'bold';
+      document.getElementById('veryfingmember').style.fontSize = '20px';
+      document.getElementById('veryfingmember').classList.add('animate');
+    setTimeout(function(){
+      document.getElementById('verificationicon').style.fontSize = '17px';
+      document.getElementById('verificationicon').classList.add('animate');
+    },1000)
+    clearInterval(); // stop the counter
+  } else if (randomMember === localStorage.getItem('testatorname') || randomMember === localStorage.getItem('nameoftestator')) {
+    counterElement.innerText = counter;
+    clearInterval(); // stop the counter
+  } else {
+    counter++;
+    counterElement.innerText = counter;
+  }
+}, 100);
+
+setTimeout(function(){
+  document.getElementById('qualifiedpopmessagediv').style.display = 'block';
+},24000)
+}
+
+function thankYou(){
+  document.getElementById('qualifiedpopmessagediv').style.display = 'none';
+  document.getElementById('congrat-explore-btn').style.display = 'block';
+}
+
+if (localStorage.getItem('nameoftestator')||localStorage.getItem('testatorname')|| localStorage.getItem('email')|| localStorage.getItem('password')){
+  document.getElementById('homebuttoninqualificationcheck').style.display = 'none';
+} 
+const qualified = localStorage.getItem('qualified');
+if (qualified !== null && qualified !== '') {
+  location.href = 'dashboard.html';
+} 
+
+//page body scroll disabling
+document.body.style.overflow = 'hidden';
+
+function exploreToDashboard(){
+  localStorage.setItem('qualified','qualified');
+  localStorage.setItem('heirship','heirship');
+  window.location.href = 'index.html';
+
+
+  
+const currentTime = new Date();
+const day = currentTime.getDate();
+const month = currentTime.getMonth() + 1;
+const year = currentTime.getFullYear();
+const hours = currentTime.getHours();
+const minutes = currentTime.getMinutes();
+const seconds = currentTime.getSeconds();
+const timeFormat = `${day.toString().padStart(2, '0')} ${month.toString().padStart(2, '0')} ${year.toString().substr(2, 2)} ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}${hours >= 12 ? 'pm' : 'am'}`;
+localStorage.setItem('fundedBalancecurrenttime', timeFormat);
+}
+
+
+function goBackHome(){
+  location.href = 'index.html';
+  localStorage.removeItem('login')
+}  
+</script>
+</body>
+</html>
