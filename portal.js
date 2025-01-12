@@ -16,7 +16,7 @@ function verifyBneficiaryDetails(){
   if (beneficiaryFirstName        ===    'keira'&& 
       beneficiaryLastName         ===    'croft'&&
       beneficiaryTestator         ===    'tyrion edward lannister'&&
-      beneficiaryTestatorAdress   ===    'illinios, united states'&&
+      beneficiaryTestatorAdress   ===    'illinois, united states'&&
       beneficiaryLawyer           ===    'robert george'&&
       beneficiaryInheritanceAmount===    '2000000'){
 
