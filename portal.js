@@ -50,7 +50,6 @@ function verifyBneficiaryDetails(){
   setTimeout(function(){
   document.getElementById('pageloadingdiv').style.display = 'none';
      //page body scroll disabling
-     document.body.style.overflow = '';
   document.getElementById('loginasbeneficiarycontentone').style.display = 'none';
   document.getElementById('loginasbeneficiarycontenttwobackground').style.display = 'block';
   },2000);
