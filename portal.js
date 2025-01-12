@@ -38,6 +38,7 @@ function verifyBneficiaryDetails(){
   document.getElementById('invalidbeneficiarydetails').innerText = 'Beneficiary details identified!';
   document.getElementById('invalidbeneficiarydetails').style.color = 'green';
   location.href = '#loginasbeneficiarycontentone';
+  location.href = '#loginasbeneficiaryportal';
   document.getElementById('verifybeneficiarydetailsbutton').style.display = 'none';
   //verify and activate next page
   setTimeout(function(){
