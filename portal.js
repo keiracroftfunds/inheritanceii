@@ -149,6 +149,8 @@ function beneficiaryFamilyOrFriend(){
   document.getElementById('reviewingtextloading').style.display = 'block';
      //page body scroll disabling
      document.body.style.overflow = 'hidden';
+    
+   document.getElementById('document-flex').style.display = 'none';
   setTimeout(function(){
     document.getElementById('processingloadingdiv').style.display = 'none';
        //page body scroll disabling
