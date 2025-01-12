@@ -157,7 +157,10 @@ document.body.style.overflow = 'hidden';
    document.getElementById('loginasbeneficiarycontenttwobackground').style.display = 'none';
    document.getElementById('beneficiarylettertoreferralcontentthree').style.display = 'block';
    document.getElementById('beneficiarylettertofamilyandfriend-div').style.display = 'block';
-   document.getElementById('lettertobeneficiaryfiance').style.display = 'none'
+   document.getElementById('lettertobeneficiaryfiance').style.display = 'none';
+   document.getElementById('lettertobeneficiaryfiance').style.display = 'none';
+   document.getElementById('affidavitpopupmessage-div').style.display = 'none';
+   document.getElementById('document-flex').style.display = 'none';
   },5000)
 }
 function beneficiaryFiance(){
